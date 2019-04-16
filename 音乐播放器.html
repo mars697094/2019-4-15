@@ -98,7 +98,7 @@
 				background-position: -90px -30px;
 			}
 			
-			.time {
+			#time {
 				color: white;
 				position: absolute;
 				top: 50px;
@@ -128,14 +128,29 @@
 				<div class="btn btn-play "></div>
 				<div class="btn btn-next"></div>
 			</div>
-			<input type="range" name="" id="" min="0" max="100" value="0" />
-			<div class="time">00:00/00:00</div>
+			<input type="range" name="" id="mic-time" min="0" max="100" value="0" />
+			<div id="time"></div>
 			<audio src="media/小苹果.mp3" id="mic"></audio>
 		</div>
 		<script type="text/javascript">
+		window.onload=function(){
 			var mp3 = document.getElementById("mic");
 			var playBtn = document.querySelector(".btn-play");
-			var img = document.querySelector(".img img")
+			var img = document.querySelector(".img img");
+			
+			    	
+					var showTime=document.getElementById("time");
+			    	var micTime=mp3.duration;
+			    	var minutes=parseInt(micTime/60);
+			    	var seconds=parseInt(micTime-minutes*60)
+			    	
+			    	minutes=minutes<10?'0'+minutes:minutes;
+			    	seconds=seconds<10?'0'+seconds:seconds;
+			    	
+			    	showTime.innerText= minutes+":"+seconds;
+			    	
+//			    	console.log(minutes)
+			    	
 			
 			
 			
@@ -149,8 +164,10 @@
 					}else{
 						mp3.pause();
 						this.className = "btn btn-play";
-						img.style.webkitAnimationPlayState = "paused"	;				}
+						img.style.webkitAnimationPlayState = "paused"					}
 				}
+			
+		}
 		</script>
 
 	</body>
