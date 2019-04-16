@@ -132,42 +132,51 @@
 			<div id="time"></div>
 			<audio src="media/小苹果.mp3" id="mic"></audio>
 		</div>
+		<script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-		window.onload=function(){
-			var mp3 = document.getElementById("mic");
-			var playBtn = document.querySelector(".btn-play");
-			var img = document.querySelector(".img img");
-			
-			    	
-					var showTime=document.getElementById("time");
-			    	var micTime=mp3.duration;
-			    	var minutes=parseInt(micTime/60);
-			    	var seconds=parseInt(micTime-minutes*60)
-			    	
-			    	minutes=minutes<10?'0'+minutes:minutes;
-			    	seconds=seconds<10?'0'+seconds:seconds;
-			    	
-			    	showTime.innerText= minutes+":"+seconds;
-			    	
-//			    	console.log(minutes)
-			    	
-			
-			
-			
-			
+			window.onload = function() {
+				
+				
+				var mp3 = document.getElementById("mic");
+				var playBtn = document.querySelector(".btn-play");
+				var img = document.querySelector(".img img");
+				var showTime = document.getElementById("time");
+				var micTime = mp3.duration;
+				var nowTime = mp3.currentTime;
+				var nowMinutes = parseInt(nowTime/60);
+				var nowSeconds = parseInt(nowTime%60);
+				var minutes = parseInt(micTime / 60);
+				var seconds = parseInt(micTime - minutes * 60);
+				
+				
+				
+				nowMinutes = nowMinutes<10?'0'+nowMinutes:nowMinutes;
+				nowSeconds = nowSeconds<10?'0'+nowSeconds:nowSeconds;
+				minutes = minutes < 10 ? '0' + minutes : minutes;
+				seconds = seconds < 10 ? '0' + seconds : seconds;
+				
+				
+				var current_Time=nowMinutes+":"+nowSeconds+"/"+ minutes + ":" + seconds;
+
+				
+				
+				
 				playBtn.onclick = function() {
 					if (mp3.paused) {
-						console.log(100)
+//						console.log(100)
 						mp3.play();
 						this.className = "btn btn-stop";
 						img.style.webkitAnimationPlayState = "running";
-					}else{
+					} else {
 						mp3.pause();
 						this.className = "btn btn-play";
-						img.style.webkitAnimationPlayState = "paused"					}
+						img.style.webkitAnimationPlayState = "paused"
+					}
 				}
-			
-		}
+				var timer=setInterval(function(){
+					showTime.innerHTML=current_Time;	
+				},100)
+			}
 		</script>
 
 	</body>
