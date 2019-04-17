@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			function addCookie(key,value,path,time){
+				
+				var key=escape(key);
+				var value=escape(value);
+				var expires=new Date();
+				
+				expires.setTime(expires.getTime()+time*1000);
+				path=path==""?"":";path="+path;
+				
+				var _expries = (typeof time)=="string"?"":";expries="+expires
+				
+				
+				document.cookie=key+"="+value+_expries+path;
+			}
+			addCookie('user_1','1',10,'/User')
+			
+			
+			
+			
+		</script>
+		
+		
+		
+		
+		
+		
+	</body>
+</html>
