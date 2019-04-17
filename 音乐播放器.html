@@ -140,28 +140,9 @@
 				var mp3 = document.getElementById("mic");
 				var playBtn = document.querySelector(".btn-play");
 				var img = document.querySelector(".img img");
-				var showTime = document.getElementById("time");
-				var micTime = mp3.duration;
-				var nowTime = mp3.currentTime;
-				var nowMinutes = parseInt(nowTime/60);
-				var nowSeconds = parseInt(nowTime%60);
-				var minutes = parseInt(micTime / 60);
-				var seconds = parseInt(micTime - minutes * 60);
 				
 				
-				
-				nowMinutes = nowMinutes<10?'0'+nowMinutes:nowMinutes;
-				nowSeconds = nowSeconds<10?'0'+nowSeconds:nowSeconds;
-				minutes = minutes < 10 ? '0' + minutes : minutes;
-				seconds = seconds < 10 ? '0' + seconds : seconds;
-				
-				
-				var current_Time=nowMinutes+":"+nowSeconds+"/"+ minutes + ":" + seconds;
-
-				
-				
-				
-				playBtn.onclick = function() {
+					playBtn.onclick = function() {
 					if (mp3.paused) {
 //						console.log(100)
 						mp3.play();
@@ -173,9 +154,37 @@
 						img.style.webkitAnimationPlayState = "paused"
 					}
 				}
-				var timer=setInterval(function(){
-					showTime.innerHTML=current_Time;	
-				},100)
+				function times(){
+					var showTime = document.getElementById("time");
+					var micTime = mp3.duration;
+					var minutes = Math.floor(micTime / 60);
+					var seconds = Math.floor(micTime%60);
+					var nowTime = mp3.currentTime;
+					var nowMinutes = Math.floor(nowTime/60);
+					var nowSeconds = Math.floor(nowTime%60);
+					
+					var timer=null;
+					
+					var _range=document.getElementById("mic-time");
+					var run_range=nowTime/micTime*100;
+					
+					_range.value=run_range
+					
+					nowMinutes = nowMinutes<10?'0'+nowMinutes:nowMinutes;
+					nowSeconds = nowSeconds<10?'0'+nowSeconds:nowSeconds;
+					minutes = minutes < 10 ? '0' + minutes : minutes;
+					seconds = seconds < 10 ? '0' + seconds : seconds;
+					
+					var current_Time=nowMinutes+":"+nowSeconds+"/"+ minutes + ":" + seconds;
+					showTime.innerHTML=current_Time	
+	//				console.log(micTime)
+					
+				}
+
+
+				var timer=setInterval(
+					times
+				,1000)
 			}
 		</script>
 
