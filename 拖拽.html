@@ -27,29 +27,34 @@
 	<body>
 		
 		<div>
-			<div class="box" draggable="true"></div>
-			<div class="box" draggable="true"></div>
-			<div class="box" draggable="true"></div>
-			<div class="box" draggable="true"></div>
-			<div class="box" draggable="true"></div>
-			<div class="box" draggable="true"></div>
-			<div class="box" draggable="true"></div>
-			<div class="box" draggable="true"></div>
-			<div class="box" draggable="true"></div>
+			<div class="box" draggable="true">1</div>
+			<div class="box" draggable="true">2</div>
+			<div class="box" draggable="true">3</div>
+			<div class="box" draggable="true">4</div>
+			<div class="box" draggable="true">5</div>
+			<div class="box" draggable="true">6</div>
+			<div class="box" draggable="true">7</div>
+			<div class="box" draggable="true">8</div>
+			<div class="box" draggable="true">9</div>
 			<div class="box" draggable="true"></div>
 			<div class="rua" ></div>
 			
 		</div>
 		<script type="text/javascript">
 			
-			var frist=document.querySelector(".box")
+			var frist=document.querySelectorAll(".box")
 			var place=document.querySelector(".rua")
+			var tmp
 			
-			
-			frist.ondragstart=function(){
+			for (var n=0;n<frist.length;n++) {
+				frist[n].ondragstart=function(){
+					tmp=this
 				
-			}
-			frist.ondragend=function(){
+				}
+				frist[n].ondragend=function(){
+					tmp=null
+				
+				}
 				
 			}
 			place.ondragenter=function(){
@@ -61,8 +66,10 @@
 			place.ondragover=function(e){
 				e.preventDefault()
 			}
-			place.ondrop=function(){
-				frist.
+			place.ondrop=function(e){
+				e.preventDefault();
+				if(tmp!=null)
+				this.appendChild(tmp)
 			}
 			
 			
