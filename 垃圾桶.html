@@ -20,7 +20,8 @@
 				content: "";
 				clear: both;
 			}
-			ul li{
+			
+			li.things{
 				text-align: center;
 				width: 300px;
 				height: 50px;
@@ -28,23 +29,62 @@
 				margin-bottom: 10px;
 				background-color: #73859F;
 			}
+			.dele li{
+				display: none;
+			}
 		</style>
 	</head>
 	<body>
 		<div class="clear">
-			<div class="left">
-				<img src="images/trash1.png"/>
+			<div class="left garbage">
+				<img id="images" src="images/trash1.png"/>
 			</div>
 			<div class="right">
 				<ul>
-					<li draggable="true">文章1</li>
-					<li draggable="true">文章2</li>
-					<li draggable="true">文章3</li>
+					<li class="things" draggable="true">文章1</li>
+					<li class="things" draggable="true">文章2</li>
+					<li class="things" draggable="true">文章3</li>
 				</ul>
 			</div>
 			
 		</div>
-		
+		<script type="text/javascript">
+			let things=document.querySelectorAll(".things")
+			let garbage=document.querySelector(".garbage")
+			let image=document.getElementById("images")
+			let tmp
+			
+			for (var n=0;n<things.length;n++) {
+				things[n].ondragstart=function(){
+					tmp=this
+				}
+				things[n].ondragend=function(){
+					tmp=null
+				}
+				
+			}
+			garbage.ondragend=function(){
+				
+			}
+			garbage.ondragleave=function(){
+				
+			}
+			garbage.ondragover=function(e){
+				e.preventDefault()
+			}
+			garbage.ondrop=function(e){
+				e.preventDefault();
+				if(tmp!=null);
+				this.appendChild(tmp);
+				this.className="dele";
+				image.src="images/trash2.jpg"
+			}
+			
+			
+			
+			
+			
+		</script>
 		
 	</body>
 </html>
