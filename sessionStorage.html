@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			var obj = {
+				name:'小明',
+				age:12,
+				sex:'boy'
+			};
+			
+			var    str=JSON.stringify(obj);
+			
+			sessionStorage.setItem("xm",str);
+			
+			var   newobj=sessionStorage.getItem("xm");
+			
+			newobj=JSON.parse(newobj)
+			
+			console.log(newobj.name)
+			
+			
+		</script>
+		
+		
+	</body>
+</html>
