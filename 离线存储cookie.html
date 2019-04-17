@@ -23,6 +23,33 @@
 			}
 			addCookie('user_1','1',10,'/User')
 			
+			function getCookie(key){
+				var key=escape(key);
+				var cookies=document.cookie;
+				var start = cookies.indexOf(key+"=");
+				
+				if (start==-1) {
+					return ""
+				} else{
+					start += (key+"=").length;
+				}
+				
+				var end = cookies.indexOf(";",start);
+				
+				if(end==-1){
+					end = cookies.length
+				}
+				return cookies.substring(start,end)
+			}
+			
+			function deleteCookie(key){
+				addCookie(key,'',0,'')
+			}
+			
+			
+			
+			
+			
 			
 			
 			
