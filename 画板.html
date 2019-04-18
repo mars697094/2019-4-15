@@ -50,10 +50,10 @@
 			var penSize=1;
 			
 			var color=document.querySelector(".col")
-			var black=document.getElementById("black")
-			var red=document.getElementById("red")
-			var blue=document.getElementById("blue")
-			var yellow=document.getElementById("yellow")
+//			var black=document.getElementById("black")
+//			var red=document.getElementById("red")
+//			var blue=document.getElementById("blue")
+//			var yellow=document.getElementById("yellow")
 			
 			
 			color.onclick=function(e){
@@ -88,6 +88,7 @@
 					var x=e.pageX-this.offsetLeft;
 					var y=e.pageY-this.offsetTop;
 					
+//					pen.clearRect()
 					
 					pen.lineWidth=penSize;
 					
@@ -96,7 +97,6 @@
 					pen.lineTo(x,y);
 				
 					pen.stroke()
-					
 					
 				}
 				
