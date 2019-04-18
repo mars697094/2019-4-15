@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#ca{
+				width: 600px;
+				height: 600px;
+				border: solid 1px;
+				margin: 0 auto;
+				display: block;
+			}
+			button{
+				width: 20px;
+				height: 20px;
+			}
+			.col button{
+				width: 50px;
+				height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="ca" width="600" height="600">
+			
+			
+			
+		</canvas>
+		<button id="add">+</button>
+		<button id="reduce">-</button>
+		<div class="col">
+			<button id="black" value="black">黑色</button>
+			<button id="red" value="red">红色</button>
+			<button id="blue" value="blue">蓝色</button>
+			<button id="yellow" value="yellow">黄色</button>
+			
+		</div>
+		
+		
+		
+		<script type="text/javascript">
+			var ca=document.getElementById("ca");
+			var pen=ca.getContext('2d');
+			var flag=false;
+			
+			
+			var add=document.getElementById("add");
+			var reduce=document.getElementById("reduce");
+			var penSize=1;
+			
+			var color=document.querySelector(".col")
+			var black=document.getElementById("black")
+			var red=document.getElementById("red")
+			var blue=document.getElementById("blue")
+			var yellow=document.getElementById("yellow")
+			
+			
+			color.onclick=function(e){
+				var target=e.target;
+				
+				if(target.localName="button"){
+					
+					colorful=target.value
+					
+					
+				}
+				
+				
+				
+			}
+			
+			
+			add.onclick=function(){
+				penSize=penSize+2;
+			}
+			reduce.onclick=function(){
+				penSize=penSize==1?1:penSize-2
+				
+			}
+			
+			ca.onmousedown=function(e){
+				flag=true;
+				pen.beginPath();
+			}
+			ca.onmousemove=function(e){
+				if(flag){
+					var x=e.pageX-this.offsetLeft;
+					var y=e.pageY-this.offsetTop;
+					
+					
+					pen.lineWidth=penSize;
+					
+					pen.strokeStyle=colorful;
+				
+					pen.lineTo(x,y);
+				
+					pen.stroke()
+					
+					
+				}
+				
+			}
+			ca.onmouseleave=function(e){
+				flag=false;
+			}
+			ca.onmouseup=function(e){
+				flag=false;
+				pen.closePath();
+			}
+
+			
+			
+			
+			
+			
+//			pen.strokeWidth=penSize
+//			pen.stroke()
+			
+		</script>
+		
+		
+		
+		
+		
+	</body>
+</html>
