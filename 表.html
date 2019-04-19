@@ -21,44 +21,48 @@
 			var pen=watch.getContext('2d');
 			var radiu=300;
 			
+			pen.resetTransform()
+			pen.arc(0,0,10,0,2*Math.PI,false)
+			pen.fill()
 			
-			
-			
-			
-			
-			pen.beginPath();
-			
-			pen.arc(400,400,radiu,0,Math.PI*2,false);
-			
-			pen.lineWidth=5
-			
-			pen.stroke()
-			
-			
-			for (i=0;i<60;i++) {
-				var ge=2*Math.PI/60*i
-				var x=400+(radiu-10)*Math.cos(ge)
-				var y=400+(radiu-10)*Math.sin(ge)
-				
+			function clock(){
 				pen.beginPath();
+			
+				pen.arc(400,400,radiu,0,Math.PI*2,false);
 				
-				pen.arc(x,y,4,0,2*Math.PI,false);
+				pen.lineWidth=5
 				
-				if(i%5==0){
-					pen.arc(x,y,8,0,2*Math.PI,false);
-					pen.fillStyle="red"
-				}else{
-					pen.fillStyle="black"
+				pen.stroke()
+				
+				
+				for (i=0;i<60;i++) {
+					var ge=2*Math.PI/60*i
+					var x=400+(radiu-10)*Math.cos(ge)
+					var y=400+(radiu-10)*Math.sin(ge)
+					
+					pen.beginPath();
+					
+					pen.arc(x,y,4,0,2*Math.PI,false);
+					
+					if(i%5==0){
+						pen.arc(x,y,8,0,2*Math.PI,false);
+						pen.fillStyle="red"
+					}else{
+						pen.fillStyle="black"
+					}
+					
+					pen.fill()
 				}
+				pen.closePath()
 				
-				pen.fill()
-				
+				}
+			function seconds(){
 				
 			}
 			
 			
-			pen.closePath()
 			
+			clock()
 			
 			
 		</script>

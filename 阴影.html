@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#shadow{
+				width: 400px;
+				height: 400px;
+				border: solid 1px;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<canvas id="shadow" width="800" height="800"></canvas>
+		<script type="text/javascript">
+			var shadow=document.getElementById("shadow");
+			var pen=shadow.getContext('2d');
+			
+			
+			function ball(){
+				ball=pen.arc(400,400,300,0,Math.PI*2,false)
+				pen.fillStyle="red"
+				pen.fill()
+			}
+			
+			ball()
+			
+			shadow.onmousemove=function(){
+				var m=document.
+			}
+//			ball.onmouseover=function(){
+//				pen.shadowColor="blue"
+//				pen.shadowOffsetX=50
+//				pen.shadowOffsetY=50
+//				pen.shadowBlur=100
+//			}
+		
+
+         
+
+				
+			
+		</script>
+
+		
+	</body>
+</html>
